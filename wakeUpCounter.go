@@ -6,15 +6,17 @@ import (
 )
 
 func main() {
-	go wakeUp(10)
+	for i:= 1; i <=5; i++{
+		go wakeUp(3, i)
+	}
 	time.Sleep(15 * time.Second)
 }
-func wakeUp(counter int) {
-	fmt.Println("...waking.up...")
+func wakeUp(counter int, id int) {
+	fmt.Printf("%d ...waking.up...\n", id)
 	for counter >= 0 {
 		time.Sleep(time.Second)
-		fmt.Printf("waking up in %d seconds...\n", counter)
+		fmt.Printf("%d waking up in %d seconds...\n",id, counter)
 		counter --
 	}
-	fmt.Println("Finally up!!")
+	fmt.Printf("%d Finally up!!\n", id)
 }
