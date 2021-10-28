@@ -13,6 +13,9 @@ func main() {
 	fmt.Println(gainWeight(50, 20))
 	fmt.Println(weightToGrams(kilograms(80)))// casting 80 to kilograms
 	fmt.Println(weightToGrams(70))// compiler will automatically detect the int as kilograms type
+	var grm grams = 10000
+	fmt.Println(grm.gramsToKilograms()) // calling gramsToKilogramsMethod
+	fmt.Println(grm.multiplyGrams(3))
 }
 //function with custom types
 func gainWeight(initial kilograms, gained kilograms) kilograms {
@@ -20,5 +23,14 @@ func gainWeight(initial kilograms, gained kilograms) kilograms {
 }
 func weightToGrams(weight kilograms) grams{
 	return grams(weight * 1000)
+}
+
+//method belonging to grams, converts grams to kilograms, takes no parameter
+func (g grams) gramsToKilograms() kilograms {
+	return kilograms(g / 1000)
+}
+//method belonging to grams, converts grams to kilograms, takes one int parameter
+func (g grams) multiplyGrams(number int) grams {
+	return grams(number) * g
 }
 
